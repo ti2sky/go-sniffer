@@ -1,18 +1,19 @@
 package build
 
 import (
-	"github.com/google/gopacket"
-	"io"
 	"bytes"
+	"encoding/binary"
 	"errors"
+	"fmt"
+	"io"
 	"log"
+	"os"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
-	"fmt"
-	"encoding/binary"
-	"strings"
-	"os"
+
+	"github.com/google/gopacket"
 )
 
 const (
@@ -351,6 +352,8 @@ func (stm *stream) resolveClientPacket(payload []byte, seq int) {
 		return
 	}
 
+	// print the message here
+	// we can add some tidb logic here
 	fmt.Println(GetNowStr(true) + msg)
 }
 
