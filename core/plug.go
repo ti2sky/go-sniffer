@@ -1,17 +1,18 @@
 package core
 
 import (
-	"io/ioutil"
-	"plugin"
-	"github.com/google/gopacket"
+	"fmt"
 	"io"
-	mysql "github.com/40t/go-sniffer/plugSrc/mysql/build"
-	redis "github.com/40t/go-sniffer/plugSrc/redis/build"
+	"io/ioutil"
+	"path"
+	"path/filepath"
+	"plugin"
+
 	hp "github.com/40t/go-sniffer/plugSrc/http/build"
 	mongodb "github.com/40t/go-sniffer/plugSrc/mongodb/build"
-	"path/filepath"
-	"fmt"
-	"path"
+	mysql "github.com/40t/go-sniffer/plugSrc/mysql/build"
+	redis "github.com/40t/go-sniffer/plugSrc/redis/build"
+	"github.com/google/gopacket"
 )
 
 type Plug struct {
@@ -24,7 +25,7 @@ type Plug struct {
 	ExternalPlugList map[string]ExternalPlug
 }
 
-// All internal plug-ins must implement this interface
+// PlugInterface All internal plug-ins must implement this interface
 // ResolvePacket - entry
 // BPFFilter     - set BPF, like: mysql(tcp and port 3306)
 // SetFlag       - plug-in params
